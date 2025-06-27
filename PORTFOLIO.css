@@ -9,6 +9,7 @@
     outline: none;
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
+    outline: 1px solid red;
 }
 
 .name-logo{
@@ -768,7 +769,7 @@ section:nth-child(odd) .animate.scroll,
     }
 }
 
-@media(max-width: 850){
+@media(max-width: 850px){
     .animate.home-img{
         width: 55%;
     }
