@@ -97,8 +97,6 @@ section{
     background: url("https://res.cloudinary.com/dwroczrua/image/upload/v1735042794/HOME.jpg");
     background-size: cover;
     background-position: center;
-    position: relative;
-    overflow: hidden;
 }
 
 .home-content{
