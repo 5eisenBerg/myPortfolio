@@ -6,7 +6,7 @@ menuIcon.onclick = () => {
   navbar.classList.toggle("active");
 };
 
-document.querySelectorAll(".navbar a").forEach(link => {
+document.querySelectorAll(".navbar a").forEach((link) => {
   link.addEventListener("click", () => {
     menuIcon.classList.remove("bx-x");
     navbar.classList.remove("active");
@@ -59,9 +59,10 @@ function sendEmail() {
   const bodyMessage = `Full Name: ${fullname.value}<br> Email: ${email.value}<br> Phone Number: ${phone.value}<br> Message: ${message.value}`;
 
   Email.send({
-    Host: "smtp.elasticemail.com",
-    Username: "anandemmanuel.billa@gmail.com",
-    Password: "303D129C27B60A4A007805C2B1890A1294BB",
+    // Host: "smtp.elasticemail.com",
+    // Username: "anandemmanuel.billa@gmail.com",
+    // Password: "303D129C27B60A4A007805C2B1890A1294BB",
+    // Password: "af75e75e-48f0-4d48-8a1f-edc6b75ba024",
     To: "anandemmanuel.billa@gmail.com",
     From: "anandemmanuel.billa@gmail.com",
     Subject: subject.value,
@@ -79,6 +80,12 @@ function sendEmail() {
       phone.value = "";
       subject.value = "";
       message.value = "";
+    } else {
+      Swal.fire({
+        title: "Failed to send",
+        text: "Server error: " + response,
+        icon: "error",
+      });
     }
   });
 }
