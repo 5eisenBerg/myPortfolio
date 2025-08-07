@@ -166,7 +166,7 @@ section {
   display: flex;
   align-items: center;
   padding: 0 9%;
-  /* background: url("./home_image.png"); */
+  background: url("https://res.cloudinary.com/dwroczrua/image/upload/v1754580178/home-img_edarxl.svg");
   background-size: cover;
   background-position: center;
 }
