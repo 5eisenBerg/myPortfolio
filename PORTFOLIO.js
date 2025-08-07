@@ -59,10 +59,7 @@ function sendEmail() {
   const bodyMessage = `Full Name: ${fullname.value}<br> Email: ${email.value}<br> Phone Number: ${phone.value}<br> Message: ${message.value}`;
 
   Email.send({
-    // Host: "smtp.elasticemail.com",
-    // Username: "anandemmanuel.billa@gmail.com",
-    // Password: "303D129C27B60A4A007805C2B1890A1294BB",
-    // Password: "af75e75e-48f0-4d48-8a1f-edc6b75ba024",
+    SecureToken: "af75e75e-48f0-4d48-8a1f-edc6b75ba024",
     To: "anandemmanuel.billa@gmail.com",
     From: "anandemmanuel.billa@gmail.com",
     Subject: subject.value,
