@@ -795,6 +795,10 @@ section:nth-child(odd) .animate.scroll,
 }
 
 @media (max-width: 768px) {
+  .home {
+    background: none;
+  }
+
   .header {
     top: 0;
     left: 0;
