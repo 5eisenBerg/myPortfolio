@@ -55,38 +55,6 @@ const phone = document.getElementById("phone");
 const subject = document.getElementById("subject");
 const message = document.getElementById("message");
 
-function sendEmail() {
-  const bodyMessage = `Full Name: ${fullname.value}<br> Email: ${email.value}<br> Phone Number: ${phone.value}<br> Message: ${message.value}`;
-
-  Email.send({
-    SecureToken: "af75e75e-48f0-4d48-8a1f-edc6b75ba024",
-    To: "anandemmanuel.billa@gmail.com",
-    From: "anandemmanuel.billa@gmail.com",
-    Subject: subject.value,
-    Body: bodyMessage,
-  }).then((response) => {
-    if (response === "OK") {
-      Swal.fire({
-        title: "Message received :-)",
-        text: "I’ll boomerang back to you shortly!",
-        icon: "success",
-      });
-
-      fullname.value = "";
-      email.value = "";
-      phone.value = "";
-      subject.value = "";
-      message.value = "";
-    } else {
-      Swal.fire({
-        title: "Failed to send",
-        text: "Server error: " + response,
-        icon: "error",
-      });
-    }
-  });
-}
-
 function checkEmail() {
   const emailPattern =
     /^([a-z\d\.-]+)@([a-z\d]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
@@ -103,7 +71,34 @@ function checkEmail() {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (checkEmail()) {
-    sendEmail();
-  }
+
+  if (!checkEmail()) return;
+
+  const templateParams = {
+    from_name: fullname.value,
+    from_email: email.value,
+    phone: phone.value,
+    subject: subject.value,
+    message: message.value,
+  };
+
+  emailjs
+    .send("service_6e5j77q", "template_swau9ev", templateParams)
+    .then(() => {
+      Swal.fire({
+        title: "Message received 🙂",
+        text: "I’ll boomerang back to you shortly!",
+        icon: "success",
+      });
+
+      // Clear the form
+      form.reset();
+    })
+    .catch((error) => {
+      Swal.fire({
+        title: "Failed to send",
+        text: "Error: " + error.text,
+        icon: "error",
+      });
+    });
 });
